@@ -1,0 +1,12 @@
+WovnTranslatedHtml/
+WovnTranslatedHtml_test/
+
+.vscode
+.DS_Store
+config/settings.json
+settings.json
+url.txt
+
+wovn-file-api-cli
+
+config/settings.json

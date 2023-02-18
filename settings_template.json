@@ -1,0 +1,30 @@
+{
+  "uploadApiUri": "https://api.wovn.io/v1/upload_page",
+  "downloadApiUri": "https://api.wovn.io/v1/download_html",
+  "projectToken": "",
+  "urlPattern": "path",
+  "apiToken": "",
+  "options": {
+    "custom_lang_aliases_json": {
+      "ar": "ara",
+      "my": "mya",
+      "nl": "dut",
+      "id": "ind",
+      "it": "ita",
+      "ms": "msa",
+      "pt": "por",
+      "es": "spa",
+      "th": "tha",
+      "vi": "vie",
+      "bn": "ben",
+      "zh-CHS": "zho",
+      "de": "deu",
+      "fr": "fra"
+    },
+    "custom_domain_langs_json": "",
+    "no_index_langs_json": "",
+    "site_prefix_path": ""
+  },
+  "targetLangCodes": ["ja", "en", "ko"],
+  "srcLangCode": "ja"
+}
