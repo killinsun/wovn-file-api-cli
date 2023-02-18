@@ -1,12 +1,12 @@
-# WOVN File translation API Tools
+# WOVN File translation API Tool
 
 ## Description
 
-This tools is a wrapper tool for the WOVN File Translation API.
+This tools is a wrapper tool for WOVN File Translation API.
 
-This can these features like,
+This tool has following features.
 
-- Make an archive file which contains translated HTML files with keeping directory structure by URL list file.
+- Make an archive file which contains translated HTML files keeping directory structure by URL list file.
 
   - This is a kind of download translated html file.
 
@@ -15,7 +15,7 @@ This can these features like,
 
 ## Supported api versions
 
-This tool uses **WOVN File translation API v1**.
+This supports **WOVN File translation API v1**.
 
 ## How to use
 
@@ -35,11 +35,11 @@ You need to prepare `url.txt` and `settings.json` in advance.
 `settings.json` has required parameters.
 
 - `projectToken` ... You can check it at the WOVN dashboard.
-- `apiKey` ... You can generate it at the WOVN dashboard.
-- `targetLangCode` ... Languages which you want to translate. but you have to add source language code.
-- `srcLangCode` ... Language wich your website's original one.
+- `apiKey` ... You can generate it at the WOVN dashboard. In order to generate API token, you need to get API feature from WOVN marketplace.
+- `targetLangCode` ... The languages that you want to translate. It's also needed to inlucde source language.
+- `srcLangCode` ... The language that your website's original one.
 
-and other value is a fixed option. so you cannot customize for now.
+Other values are dummy parameters, so you can't use them for now.
 
 ```bash
 $ cp settings_template.json settings.json
@@ -53,15 +53,13 @@ https://example.com/page1.html
 https://example.com/page2.html
 ```
 
-We recommend you should put these files on same directory with `wovn-file-api-cli` binary.
-
 ### Run
 
-You can download HTML files by `-d` option.
+You can download translated HTML files by `-d` option.
 
 ```bash
 $ ./wovn-file-api-cli -d
 ```
 
-then, you can see `./WovnTranslatedHtml` in your current directory.
-Now, you can upload HTML files on your server.
+then, you can see `WovnTranslatedHtml` directory in your current directory.
+Now, you can upload HTML files on your own server.
