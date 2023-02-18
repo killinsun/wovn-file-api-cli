@@ -10,7 +10,6 @@ import (
 	"testing"
 )
 
-
 func TestGetTranslated(t *testing.T) {
 	srv := serverMock()
 	defer srv.Close()
@@ -18,7 +17,7 @@ func TestGetTranslated(t *testing.T) {
 	var wovnAPIRepository IWovnAPIRepository
 	wovnAPIRepository = &WovnAPIRepository{}
 
-	t.Run("Should contain a correct word in got HTTP response body.", func(t *testing.T){ 
+	t.Run("Should contain a correct word in got HTTP response body.", func(t *testing.T) {
 
 		want := "<h1>It works!</h1>"
 
@@ -26,18 +25,16 @@ func TestGetTranslated(t *testing.T) {
 
 		endpoint := srv.URL + "/v1/download_html"
 		apiOptionQuery := url.Values{
-			"url": []string{"https://example.com"},
-			"project_token": []string{"hoge"},
+			"url":              []string{"https://example.com"},
+			"project_token":    []string{"hoge"},
 			"target_lang_code": []string{"en"},
-			"url_pattern": []string{"path"},
+			"url_pattern":      []string{"path"},
 		}
 
 		got, _ := wovnAPIRepository.GetTranslated(ctx, endpoint, apiOptionQuery.Encode(), "key")
 
-		
-
 		if want != got {
-			t.Errorf("want: %q, but got: %q, endpoint: %q, apiOptionQuery: %q ",want, got, endpoint, apiOptionQuery)
+			t.Errorf("want: %q, but got: %q, endpoint: %q, apiOptionQuery: %q ", want, got, endpoint, apiOptionQuery)
 		}
 	})
 }
@@ -49,7 +46,7 @@ func TestSendRport(t *testing.T) {
 	var wovnAPIRepository IWovnAPIRepository
 	wovnAPIRepository = &WovnAPIRepository{}
 
-	t.Run("Should get HTTP 200 ", func(t *testing.T){ 
+	t.Run("Should get HTTP 200 ", func(t *testing.T) {
 
 		want := http.StatusOK
 
@@ -58,11 +55,10 @@ func TestSendRport(t *testing.T) {
 		apiKey := "AAAA"
 		url := "https://example.com"
 
-		got, _:= wovnAPIRepository.SendReport(endpoint, url, projectToken, apiKey)
-		
+		got, _ := wovnAPIRepository.SendReport(endpoint, url, projectToken, apiKey)
 
 		if want != got {
-			t.Errorf("want: %v, but got: %v, endpoint: %q",want, got, endpoint)
+			t.Errorf("want: %v, but got: %v, endpoint: %q", want, got, endpoint)
 		}
 	})
 
@@ -89,8 +85,8 @@ func responseUploadHTMLMock(w http.ResponseWriter, r *http.Request) {
 	bodyLength, _ := r.Body.Read(body)
 
 	type RequestBody struct {
-		ProjectToken string
-		Url string
+		ProjectToken string `json:"project_token"`
+		Url          string `json:"url"`
 	}
 	jsonBody := &RequestBody{}
 	json.Unmarshal(body[:bodyLength], &jsonBody)
